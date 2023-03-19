@@ -13,7 +13,7 @@ export default function SubscriptionForm() {
       return;
     }
 
-    fetch("http://localhost:5000/sendmail", {
+    fetch("https://bug-hunting-server.onrender.com/sendmail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
