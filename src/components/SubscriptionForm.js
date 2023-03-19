@@ -13,27 +13,27 @@ export default function SubscriptionForm() {
       return;
     }
 
-    fetch("https://103.108.146.90:5000/sendmail", {
+    fetch("http://localhost:5000/sendmail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email }),
     })
-      .then((res) => {
-        res.text();
-      })
+      .then((res) => res.json())
+
       .then((data) => {
         console.log(data);
-        // JSON.parse(`${data}`);
+        if (data) {
+          hitToast(
+            `Mail Sent Successfully ID: ${data.insertedId}`,
+            data.acknowledged ? "success" : "error"
+          );
+        }
       })
-      .then((data) =>
-        hitToast(data.message, data.success ? "success" : "error")
-      )
       .catch(() =>
         hitToast("Something went wrong. Please try again.", "error")
       );
-
     setAlertClass("");
   };
 

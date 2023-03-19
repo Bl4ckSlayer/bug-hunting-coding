@@ -1,20 +1,9 @@
 import { toast } from "react-toastify";
 const hitToast = (message, variant) => {
-  // if (!["success", "error"].includes(message)) {
-  //   toast(`${message}`, {
-  //     type: `${variant}`,
-  //     position: "top-right",
-  //     autoClose: 3000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //   });
-  //   return;
-  // }
-  toast(`${message}`, {
-    type: `${variant}`,
+  console.log(message, variant);
+  if (!["success", "error"].includes(variant)) throw Error();
+
+  toast[`${variant}`](message, {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -25,17 +14,3 @@ const hitToast = (message, variant) => {
   });
 };
 export default hitToast;
-// import { toast } from "react-toastify";
-// const hitToast = (variant, message) => {
-//   if (!["success", "error"].includes(variant)) throw Error();
-//   toast[`${variant}`](message, {
-//     position: "top-right",
-//     autoClose: 3000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-//   });
-// };
-// export default hitToast;
